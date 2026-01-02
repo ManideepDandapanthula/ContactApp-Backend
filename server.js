@@ -8,22 +8,18 @@ const contactRoutes = require("./routes/contactRoutes");
 const app = express();
 
 // ===================== CORS =====================
-// Allow only your Vercel frontend
 app.use(cors({
   origin: "https://contact-app-frontend-kklhxunmd-manideeps-projects-40280c46.vercel.app",
-  methods: ["GET", "POST", "DELETE"], // allowed HTTP methods
+  methods: ["GET", "POST", "DELETE"],
 }));
 
 // ===================== MIDDLEWARE =====================
 app.use(express.json());
 
 // ===================== MONGO CONNECTION =====================
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log("MongoDB connected ✅"))
-.catch((err) => console.error("MongoDB connection error ❌", err));
+mongoose.connect(process.env.MONGO_URI) // ✅ no extra options needed
+  .then(() => console.log("MongoDB connected ✅"))
+  .catch((err) => console.error("MongoDB connection error ❌", err));
 
 // ===================== ROUTES =====================
 app.use("/api/contacts", contactRoutes);
