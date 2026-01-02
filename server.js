@@ -9,7 +9,7 @@ const app = express();
 
 // ===================== CORS =====================
 app.use(cors({
-  origin: "https://contact-app-frontend-kklhxunmd-manideeps-projects-40280c46.vercel.app",
+  origin: "https://contact-app-frontend-six.vercel.app/",
   methods: ["GET", "POST", "DELETE"],
 }));
 
@@ -27,3 +27,4 @@ app.use("/api/contacts", contactRoutes);
 // ===================== PORT =====================
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT} 🚀`));
+
